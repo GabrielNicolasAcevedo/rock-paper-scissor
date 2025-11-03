@@ -11,13 +11,10 @@ let computerScore = 0;
 //console.log(playerChoice);
 
 
-let computerChoice = getComputerChoice();
-let playerChoice = getPlayerChoice();
+let computerChoice;
+let playerChoice;
 
-console.log(computerChoice);
-console.log(playerChoice);
-
-playRound(playerChoice, computerChoice);
+playGame();
 
 
 /** 
@@ -71,6 +68,10 @@ function getPlayerChoice() {
  */
 
 function playRound(player, computer) {
+
+    console.log(player);
+    console.log(computer);
+    
     switch (player) {
         case "rock":
             switch (computer) {
@@ -86,7 +87,7 @@ function playRound(player, computer) {
                     console.log("It's a tie!")
                     break;
             }
-        break;
+            break;
 
         case "scissors":
             switch (computer) {
@@ -102,7 +103,7 @@ function playRound(player, computer) {
                     console.log("It's a tie!")
                     break;
             }
-        break;
+            break;
 
         case "paper":
             switch (computer) {
@@ -118,11 +119,21 @@ function playRound(player, computer) {
                     console.log("It's a tie!")
                     break;
             }
-        break;
+            break;
     }
 }
 
 function playGame() {
-    
+    for (let round = 0; round < 5; round++) {
+        playRound(getPlayerChoice(), getComputerChoice());
+    }
+    if (playerScore === computerScore) {
+        console.log("It's a draw! You couldn't beat your computer! jaja!")
+    } else if (playerScore > computerScore) {
+        console.log("Amazing! You beat the super computer!!")
+    } else {
+        console.log("The computer has beaten you! Good luck next time!")
+    }
+
 }
 
